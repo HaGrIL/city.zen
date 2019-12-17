@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'book_now' | translate}}
+            <span (click)="proceed()">
+                <ion-icon name="md-checkmark"></ion-icon>
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <iframe *ngIf="isShowPayment" [src]="paymentUrl | safe"  style="width:100%;height:100%" scrolling="yes" ></iframe>
+    <ion-icon (click)="closePayment()" *ngIf="isShowPayment" class="close" name="close"></ion-icon>
+    <div *ngIf="!isShowPayment">
+        <ion-list *ngIf="!appointment && profile" class="profile bg-thime">
+            <ion-item class=" bg-thime">
+                <ion-avatar item-start>
+                    <img *ngIf="profile && profile.user.image_url" data-src="{{profile.user.image_url}}">
+                    <img *ngIf="!profile || !profile.user.image_url" src="assets/imgs/empty_dp.png">
+                </ion-avatar>
+                <h2 class="text-white">{{profile.user.name}} <span> | {{profile.primary_category.title}}</span></h2>
+            </ion-item>
+        </ion-list>
+        <ion-scroll scrollX="true" style="height: 120px;; white-space: nowrap;" class=" bg-thime">
+            <div *ngFor="let d of dates" [ngClass]="(dateSelected == d) ? 'select-date active' : 'select-date'" (click)="markSelected(d)">
+                <p text-center>{{ weekDays[d.getDay()]}}</p>
+                <h2 text-center>{{ d.getDate()}}</h2>
+            </div>
+        </ion-scroll>
+
+        <div class="form">
+            <ion-list no-lines>
+                <ion-item class="select-box">
+                    <ion-label class="text-thime">{{'when' | translate}}</ion-label>
+                    <ion-select [(ngModel)]="timeRangeSelected" [compareWith]="compareFn">
+                        <ion-option *ngFor="let tr of timeRange" [value]="tr">{{tr.time_value}}</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item *ngIf="!appointment && address">
+                    <ion-label class="text-grey" floating>{{'address_title' | translate}}</ion-label>
+                    <ion-input type="text" [readonly]="true" [(ngModel)]="address.title"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!appointment && address">
+                    <ion-label class="text-grey" floating>{{'full_address' | translate}}</ion-label>
+                    <ion-input type="text" [readonly]="true" [(ngModel)]="address.address"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!appointment">
+                    <ion-label class="text-grey" floating>{{'appointment_notes' | translate}}</ion-label>
+                    <ion-input type="text" [(ngModel)]="notes"></ion-input>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>
+<ion-footer *ngIf="!isShowPayment">
+    <button class="btn" ion-button round full margin-top (click)="proceed()">{{'confirm' | translate}}</button>
+</ion-footer>

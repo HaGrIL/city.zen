@@ -1,0 +1,116 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <!-- <span>
+                <ion-icon name="md-share"></ion-icon>
+            </span> -->
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="profile" class="bg-light">
+    <div class="bg-light profile-box">
+        <div class="profile">
+            <div class="profile-img">
+                <img *ngIf="profile && profile.user.image_url" data-src="{{profile.user.image_url}}">
+                <img *ngIf="!profile || !profile.user.image_url" src="assets/imgs/empty_dp.png">
+            </div>
+            <p class="retaing text-green" text-right>
+                {{profile.ratings}}
+                <span class="text-grey">
+                    <ion-icon name="star" class="text-green"></ion-icon>
+                    ({{profile.ratingscount}})
+                </span>
+            </p>
+            <h2 text-center>
+                    {{profile.user.name}}
+                <ion-icon *ngIf="profile.is_verified == 1" name="checkmark-circle"></ion-icon>
+                <span class="text-grey"> |
+                    {{profile.primary_category.title}}
+                </span>
+            </h2>
+            <ion-row>
+                <ion-col col-6>
+                    <h3 text-center>{{profile.priceToShow}}</h3>
+                    <p text-center>per {{profile.price_type}}</p>
+                </ion-col>
+                <ion-col col-6>
+                    <h3 text-center> {{profile.distance}} m</h3>
+                    <p text-center>{{'away_from_you' | translate}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row class="btn-box" justify-content-center="">
+                <ion-col col-4>
+                    <button ion-button icon-start full class="btn" (click)="booknow()">
+                        <ion-icon name="md-checkmark-circle"></ion-icon>
+                        {{'book_now' | translate}}
+                    </button>
+                </ion-col>
+                <!--<ion-col col-4>-->
+                    <!--<button ion-button icon-start full class="btn message-btn text-thime" (click)="chatscreen()">-->
+                        <!--<ion-icon name="md-text"></ion-icon>-->
+                        <!--{{'message' | translate}}-->
+                    <!--</button>-->
+                <!--</ion-col>-->
+                <!--<ion-col col-4>-->
+                    <!--<button ion-button icon-start full class="btn message-btn text-thime" (click)="callProvider()">-->
+                        <!--<ion-icon name="md-call"></ion-icon>-->
+                        <!--{{'call' | translate}}-->
+                    <!--</button>-->
+                <!--</ion-col>-->
+            </ion-row>
+        </div>
+        <ion-segment [(ngModel)]="plumber">
+            <ion-segment-button value="about">
+                {{'about' | translate}}
+            </ion-segment-button>
+            <ion-segment-button value="reviews">
+                {{'reviews' | translate}}
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div class="tab">
+        <div [ngSwitch]="plumber" class="tab-container">
+            <ion-list *ngSwitchCase="'about'">
+                <p>{{profile.about}}</p>
+                <div *ngIf="profile.subcategories && profile.subcategories.length" class="services">
+                    <h6 class="text-thime">
+                        {{'services' | translate}}
+                    </h6>
+                    <p *ngFor="let service of profile.subcategories">{{service.title}}</p>
+                </div>
+            </ion-list>
+
+            <ion-list *ngSwitchCase="'reviews'" no-lines class="reviews">
+                <div class="empty-view" *ngIf="(!reviews || !reviews.length)">
+                    <div style="text-align:center">
+                        <img src="assets/imgs/empty_reviews.png" alt="no offers" />
+                        <span style="color:#9E9E9E; font-weight:bold;">{{'no_reviews_to_show' | translate}}</span>
+                    </div>
+                </div>
+                <ion-item *ngFor="let review of reviews">
+                    <div class="reviews-details">
+                        <div class="review-img">
+                            <img *ngIf="review.user && review.user.image_url" data-src="{{review.user.image_url}}">
+                            <img *ngIf="!review.user || !review.user.image_url" src="assets/imgs/empty_dp.png">
+                        </div>
+                        <h2 class="text-ellipsis">
+                            {{review.user.name}}
+                            <br>
+                            <small class="text-green">
+                                {{review.rating}}
+                                <ion-icon name="star" class="text-green"></ion-icon>
+                            </small>
+                        </h2>
+                        <p class="text-ellipsis">{{review.created_at}} </p>
+                    </div>
+                    <p>{{review.review}}</p>
+                </ion-item>
+            </ion-list>
+            <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+                <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <span>
+                <!-- <ion-icon name="md-search"></ion-icon> -->
+            </span>
+        </ion-title>
+    </ion-navbar>
+    <div class="logo-box bg-thime">
+        <div *ngIf="parentCategory" class="logo" text-center>
+            <img data-src="{{parentCategory.secondary_image_url}}">
+            <p class="text-white">{{parentCategory.title}}</p>
+        </div>
+    </div>
+</ion-header>
+
+<ion-content>
+    <div class="empty-view" *ngIf="!isLoading && (!subCategories || !subCategories.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/empty_category.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">
+                {{'empty_categories_sub' | translate}}
+            </span>
+        </div>
+    </div>
+<ion-list *ngIf="subCategories && subCategories.length" no-lines>
+    <ion-item *ngFor="let cat of subCategories" (click)="subCatDetail(cat)">
+        <h2><span class="text-ellipsis">{{cat.title}}</span>
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        </h2>
+    </ion-item>
+</ion-list>
+</ion-content>

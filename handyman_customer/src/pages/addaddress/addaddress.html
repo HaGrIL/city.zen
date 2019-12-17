@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{title}}
+            <span>
+                <ion-icon *ngIf="address.id && address.id!=-1" name="md-trash" (click)="confirmDelete()"></ion-icon>
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'address_title' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="address.title"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'full_address' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="address.address"></ion-input>
+            </ion-item>
+            <ion-item (click)="onPickLocationClick()" class="select_address">
+                <h3>{{'location' | translate}}</h3>
+                <p class="text-grey">
+                    <ion-icon name="ios-pin"></ion-icon> {{addressLocation.name}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-item class="add-item" (click)="onSaveClick()">
+        <h2 class="text-thime" text-center>
+            <ion-icon name="md-add-circle"></ion-icon>{{'save' | translate}}
+        </h2>
+    </ion-item>
+</ion-footer>

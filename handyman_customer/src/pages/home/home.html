@@ -1,0 +1,28 @@
+<ion-header class="bg-transparent ">
+    <ion-navbar>
+        <ion-title>
+            <ion-icon name="pin" class="text-white pin-icon"></ion-icon>
+            <span class="city" style="margin-left: 0 !important;" (click)="checkForLocation(true)">
+                <ion-label class="my_address text-white" *ngIf="selectedLocation">{{'location_for_service' | translate}}<br>{{selectedLocation.name}}</ion-label>
+                <ion-label *ngIf="!selectedLocation" class="text-white">{{'select_location' | translate}}</ion-label>
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="banner" *ngIf="!isShowPayment">
+        <!--<img src="assets/imgs/banner.jpg">-->
+        <h1 class="text-white">{{'how_can_we_help_you_today' | translate}}</h1>
+    </div>
+    <!--<ion-searchbar (ionInput)="getItems($event)" placeholder="{{'search_for_service' | translate}}"></ion-searchbar>-->
+
+    <div *ngIf="categories && categories.length">
+        <ion-item *ngFor="let cat of categories" (click)="subCatPage(cat)">
+            <div class="menu-item">
+                <img data-src="{{cat.image_url}}">
+                <p class="text-ellipsis cat-title">{{cat.title}}</p>
+            </div>
+        </ion-item>
+    </div>
+</ion-content>

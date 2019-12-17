@@ -1,0 +1,121 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'job_detail' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+    <ion-list class="profile">
+        <ion-item>
+            <ion-avatar item-start (click)="viewProfile()">
+                <img *ngIf="appointment.provider && appointment.provider.user.image_url"
+                    data-src="{{appointment.provider.user.image_url}}">
+                <img *ngIf="!appointment.provider || !appointment.provider.user.image_url"
+                    src="assets/imgs/empty_dp.png">
+            </ion-avatar>
+            <h2 class="">
+                <strong class="text-ellipsis">{{appointment.provider.user.name}}</strong>
+                <ion-icon *ngIf="appointment.provider.is_verified == 1" name="checkmark-circle"></ion-icon>
+                <span> | {{appointment.provider.primary_category.title}}</span>
+                <ion-icon name="md-call" class="text-thime" (click)="callProvider()"></ion-icon>
+                <ion-icon name="md-text" class="text-thime" (click)="chatscreen()"></ion-icon>
+            </h2>
+            <div class="details">
+                <p *ngIf="appointment.category" class="">
+                    <small>Job Task</small>
+                    <span class="text-ellipsis">{{appointment.category.title}}</span>
+                </p>
+                <ion-row>
+                    <ion-col col-6>
+                        <p class="">
+                            <small>{{'booking_for' | translate}}</small>
+                            <span class="text-ellipsis">
+                                {{appointment.date_formatted}},
+                                {{appointment.time_from_formatted}}-{{appointment.time_to_formatted}}
+                            </span>
+                        </p>
+                    </ion-col>
+                    <ion-col col-6>
+                        <p class="job-fess">
+                            <small>{{'job_fees' | translate}}</small>
+                            <span class="text-ellipsis">
+                                {{appointment.provider.priceToShow}} / {{appointment.provider.price_type}}
+                            </span>
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <p class="job-fess">
+                    <small>{{'address' | translate}}</small>
+                    <span class="">{{appointment.address.address}}</span>
+                </p>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div *ngIf="appointment.status=='pending'||appointment.status=='accepted'" class="btn-container">
+        <ion-row>
+            <ion-col col-4>
+                <button ion-button icon-start full (click)="cancelJob()">
+                    <ion-icon name="md-close"></ion-icon>
+                    {{'cancel' | translate}}
+                </button>
+            </ion-col>
+            <ion-col col-4>
+                <button ion-button icon-start full (click)="reschedule()">
+                    <ion-icon name="md-refresh"></ion-icon>{{'reschedule' | translate}}
+                </button>
+            </ion-col>
+            <ion-col col-4>
+                <button ion-button icon-start full (click)="viewProfile()">
+                    <ion-icon name="md-person"></ion-icon>{{'view_profile' | translate}}
+                </button>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div *ngIf="!(appointment.status=='pending'||appointment.status=='accepted')" class="btn-container">
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-start full>
+                    <ion-icon name="md-checkmark"></ion-icon>
+                    {{statusText}}
+                </button>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="job-status">
+        <h2>{{'job_status' | translate}}</h2>
+        <ion-list no-lines>
+            <ion-item [ngClass]="statusLevel==1 ? 'active' : 'disable'">
+                <span item-start class="circle"></span>
+                <div class="text">
+                    <h4 class="text-ellipsis">{{'job_'+appointment.status | translate}}
+                        <small *ngIf="statusLevel1Time">{{statusLevel1Time}}</small>
+                    </h4>
+                </div>
+            </ion-item>
+            <ion-item [ngClass]="statusLevel==2 ? 'active' : 'disable'">
+                <span item-start class="circle"></span>
+                <div class="text">
+                    <h4 class="text-ellipsis">{{'job_in_process' | translate}}
+                        <small *ngIf="statusLevel2Time">{{statusLevel2Time}}</small>
+                    </h4>
+                    <h2 *ngIf="statusLevel==2" (click)="trackProvider()">{{'view_in_map' | translate}}</h2>
+                </div>
+            </ion-item>
+            <ion-item [ngClass]="statusLevel==3 ? 'active' : 'disable'">
+                <span item-start class="circle"></span>
+                <div class="text">
+                    <h4 class="text-ellipsis">
+                        {{'job_completed' | translate}}
+                        <small>
+                            {{statusLevel3Time}}
+                        </small>
+                    </h4>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+<ion-footer *ngIf="canRate">
+    <button class="btn" ion-button round full margin-top (click)="rate()">{{'review_now' | translate}}</button>
+</ion-footer>

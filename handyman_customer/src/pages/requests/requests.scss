@@ -1,0 +1,161 @@
+page-requests {
+    .segment {
+        .segment-button {
+            border: none !important;
+            position: relative;
+            font-size: 1.6rem;
+            color: #fff;
+            text-transform: none;
+            font-weight: 400;
+            opacity: unset;
+            letter-spacing: .5px;
+            background: none !important;
+            border: none !important;
+            height: 4.7rem;
+            width: 100%;
+            font-weight: 300;
+            &.segment-activated {
+                font-weight: 400;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0;
+                    right: 0;
+                    width: 100px;
+                    height: 4px;
+                    margin: auto;
+                    background: $white-color;
+                }
+            }
+        }
+    }
+    .list {
+        margin-top: 7px;
+        .item {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            margin-bottom: 2px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            ion-avatar {
+                width: 70px;
+                height: 70px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 50%;
+                img {
+                    position: absolute;
+                    top: 0 !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    bottom: 0 !important;
+                    margin: auto !important;
+                    width: 75px;
+                    height: 75px;
+                    max-width: unset !important;
+                }
+            }
+            h2 {
+                font-size: 1.6rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
+                ion-icon {
+                    font-size: 1.8rem;
+                    color: $green-color;
+                    position: relative;
+                    top: 3px;
+                    margin: 0 5px;
+                }
+                span {
+                    &.small {
+                        font-size: 1.3rem;
+                        font-weight: 300;
+                    }
+                    &.ml-auto {
+                        margin-left: auto;
+                        font-weight: 500;
+                        min-width: 65px;
+                        text-align: right;
+                        color: $grey-color;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+            &.accepted {
+                h2 {
+                    span {
+                        &.ml-auto {
+                            color: $green-color !important;
+                        }
+                    }
+                }
+            }
+            &.rejected {
+                h2 {
+                    span {
+                        &.ml-auto {
+                            color: $red-color !important;
+                        }
+                    }
+                }
+            }
+            &.ongoing {
+                h2 {
+                    span {
+                        &.ml-auto {
+                            color: $thime-color !important;
+                        }
+                    }
+                }
+            }
+            p {
+                font-size: 1.15rem;
+                font-weight: 400;
+                color: $dark-color !important;
+                display: flex;
+                align-items: center;
+                span {
+                    img {
+                        position: relative;
+                        width: 7px;
+                        top: 1px;
+                    }
+                    &.ml-auto {
+                        margin-left: auto;
+                        font-weight: 300;
+                        font-size: 1.1rem;
+                        min-width: 123px;
+                        max-width: 130px;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+    .empty-view {
+        width: 200px;
+        margin: auto;
+        height: 200px;
+        top: 10%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10%;
+        img{
+          width:100px;
+          margin:auto;
+        }
+        span{
+          display:block;
+          text-align:center;
+        }
+        button{
+          margin-top: 50px;
+          span{
+            display: unset !important;
+          }
+        }
+    }
+}

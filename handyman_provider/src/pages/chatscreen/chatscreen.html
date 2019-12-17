@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <span class="profile">
+                <img *ngIf="chat.chatImage && chat.chatImage.length" data-src="{{chat.chatImage}}">
+                <img *ngIf="!chat.chatImage || !chat.chatImage.length" src="assets/imgs/empty_dp.png">
+            </span>
+            {{chat.chatName}}
+            <!-- <small> | {{chat.chatStatus}}</small> -->
+            <!-- <span><ion-icon name="md-more"></ion-icon></span> -->
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content #content class="bg-light">
+    <ion-card *ngFor="let msg of messages" [ngClass]="(userMe.id == msg.senderId) ? 'send' : 'received'">
+        <h2>{{msg.body}}</h2>
+        <p>{{msg.timeDiff}}</p>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <div class="fixed-bottom">
+        <ion-row>
+            <ion-col col-10>
+                <ion-list class="" no-lines>
+                    <ion-item>
+                        <ion-textarea type="text" [(ngModel)]="newMessageText" placeholder="Type your message">
+                        </ion-textarea>
+                        <!-- <h3 item-end>
+                            <ion-icon><img src="assets/imgs/add-icon.png"></ion-icon>
+                            <ion-icon name="md-mic"></ion-icon>
+                        </h3> -->
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+            <ion-col col-2 class="">
+                <p class="bg-thime" text-center (mousedown)="send(); $event.preventDefault()">
+                    <ion-icon name="md-send"></ion-icon>
+                </p>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-footer>

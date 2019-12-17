@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <span class="profile">
+                <img *ngIf="appointment.provider && appointment.provider.user && appointment.provider.user.image_url"
+                    data-src="{{appointment.provider.user.image_url}}">
+                <img *ngIf="!appointment.provider || !appointment.provider.user || !appointment.provider.user.image_url"
+                    src="assets/imgs/empty_dp.png">
+            </span>
+            {{appointment.provider.user.name}}
+            <!-- <small> | {{chat.chatStatus}}</small> -->
+            <!-- <span><ion-icon name="md-more"></ion-icon></span> -->
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div #pleaseConnect id="please-connect">
+        <p>{{'please_connect_to_the_internet' | translate}}</p>
+    </div>
+    <div #map id="map">
+        <ion-spinner></ion-spinner>
+    </div>
+</ion-content>

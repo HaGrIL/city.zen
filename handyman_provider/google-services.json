@@ -1,0 +1,167 @@
+{
+  "project_info": {
+    "project_number": "436254256867",
+    "firebase_url": "https://cityzen-wellness-app.firebaseio.com",
+    "project_id": "cityzen-wellness-app",
+    "storage_bucket": "cityzen-wellness-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436254256867:android:11cbf0d767dfcf4cdcdfd6",
+        "android_client_info": {
+          "package_name": "City.Zen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436254256867-vhlohrv1gb3lmk9phbtq5q40oib7lkg2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "City.Zen",
+            "certificate_hash": "699e006c6a0c15d3b6c7bb7717edb7df4202af01"
+          }
+        },
+        {
+          "client_id": "436254256867-ig6basogdo2v7d81itu705o2q2ho4lb3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "City.Zen",
+            "certificate_hash": "79acd7a003256319e6dab9e80effc7b9a82d4158"
+          }
+        },
+        {
+          "client_id": "436254256867-kph1b8pbpm2arpa857cekupv24a44hlu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "City.Zen",
+            "certificate_hash": "65d04aec400489639e5016757325cd8b14967752"
+          }
+        },
+        {
+          "client_id": "436254256867-e6r3okpcmd92pqfveu29r22mmnm52aku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPM9s28GeKplJ6iM2DEprHHPyuWkAPEUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436254256867-e6r3okpcmd92pqfveu29r22mmnm52aku.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "436254256867-cgn67q3g583m56k0fivnin7t4rt3jh6i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.city.zen.customers"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436254256867:android:d468953ea9181357dcdfd6",
+        "android_client_info": {
+          "package_name": "com.city.zen.customers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436254256867-1rd7ldbo95k23lcrc8su6tuotbcqb396.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.city.zen.customers",
+            "certificate_hash": "699e006c6a0c15d3b6c7bb7717edb7df4202af01"
+          }
+        },
+        {
+          "client_id": "436254256867-ksiht8j3n3a426t5uls7oe9g7hnbui3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.city.zen.customers",
+            "certificate_hash": "65d04aec400489639e5016757325cd8b14967752"
+          }
+        },
+        {
+          "client_id": "436254256867-hsmkrsa1tvces3sar450ql7pv9suhali.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.city.zen.customers",
+            "certificate_hash": "79acd7a003256319e6dab9e80effc7b9a82d4158"
+          }
+        },
+        {
+          "client_id": "436254256867-e6r3okpcmd92pqfveu29r22mmnm52aku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPM9s28GeKplJ6iM2DEprHHPyuWkAPEUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436254256867-e6r3okpcmd92pqfveu29r22mmnm52aku.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "436254256867-cgn67q3g583m56k0fivnin7t4rt3jh6i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.city.zen.customers"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436254256867:android:032bda4ccdf77a8ddcdfd6",
+        "android_client_info": {
+          "package_name": "com.cityzen.provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436254256867-e6r3okpcmd92pqfveu29r22mmnm52aku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPM9s28GeKplJ6iM2DEprHHPyuWkAPEUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436254256867-e6r3okpcmd92pqfveu29r22mmnm52aku.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "436254256867-cgn67q3g583m56k0fivnin7t4rt3jh6i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.city.zen.customers"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

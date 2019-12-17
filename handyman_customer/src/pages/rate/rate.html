@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'rate_us' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-card class="slip">
+        <div text-center>
+            <h4 class="text-dark">{{'we_hope_you_had' | translate}}</h4>
+            <p class="text-light">{{appointment.updated_at}}</p>
+            <!-- <h1 class="text-theme">{{appointment.provider.price}} / {{appointment.provider.price_type}}</h1> -->
+            <!-- <h4 class="text-dark">Payment has been donevia<br>your Vroom Wallet</h4> -->
+        </div>
+    </ion-card>
+    <ion-card class="rate">
+        <div text-center>
+            <p>{{'kindly_rate_and_review_your_experience_with' | translate}}</p>
+            <div class="driver">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img *ngIf="appointment.provider && appointment.provider.user.image_url" data-src="{{appointment.provider.user.image_url}}">
+                        <img *ngIf="!appointment.provider || !appointment.provider.user.image_url" src="assets/imgs/empty_dp.png">
+                    </ion-avatar>
+                    <h2>{{appointment.provider.user.name}}
+                        <ion-icon name="ios-checkmark-circle" class="text-theme"></ion-icon>
+                    </h2>
+                    <p>{{appointment.provider.primary_category.title}}</p>
+                </ion-item>
+                <p class="icons">
+                    <ion-icon name="ios-star" [ngClass]="rateRequest.rating>=1 ? 'active' : ''" (click)="setRating(1)"></ion-icon>
+                    <ion-icon name="ios-star" [ngClass]="rateRequest.rating>=2 ? 'active' : ''" (click)="setRating(2)"></ion-icon>
+                    <ion-icon name="ios-star" [ngClass]="rateRequest.rating>=3 ? 'active' : ''" (click)="setRating(3)"></ion-icon>
+                    <ion-icon name="ios-star" [ngClass]="rateRequest.rating>=4 ? 'active' : ''" (click)="setRating(4)"></ion-icon>
+                    <ion-icon name="ios-star" [ngClass]="rateRequest.rating==5 ? 'active' : ''" (click)="setRating(5)"></ion-icon>
+                </p>
+                <!--<div class="form">-->
+                    <!--<ion-list no-lines>-->
+                        <!--<ion-item>-->
+                            <!--<ion-textarea type="text" [(ngModel)]="rateRequest.review" placeholder="Leave a feedback"></ion-textarea>-->
+                        <!--</ion-item>-->
+                    <!--</ion-list>-->
+                <!--</div>-->
+                <p padding-top>
+                    <button class="btn text-white" ion-button round block (click)="submitRating()">
+                        {{'submit_rating' | translate}}
+                    </button>
+                </p>
+            </div>
+        </div>
+    </ion-card>
+</ion-content>
