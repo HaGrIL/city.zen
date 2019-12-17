@@ -56,7 +56,7 @@
     "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-googleplus": "^5.3.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
-    "cordova-plugin-ionic-webview": "^1.2.1",
+    "cordova-plugin-ionic-webview": "^2.2.0",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-plugin-multidex": "^0.1.4",
     "cordova-plugin-network-information": "^2.0.1",
